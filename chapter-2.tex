@@ -1,0 +1,115 @@
+\documentclass[a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage[english]{babel}
+\usepackage{amsmath, amssymb}
+\usepackage[]{amsthm} %lets us use \begin{proof}
+\usepackage[]{amssymb} %gives us the character \varnothing
+
+
+% figure support
+\usepackage{import}
+\usepackage{xifthen}
+\pdfminorversion=7
+\usepackage{pdfpages}
+\usepackage{transparent}
+\newcommand{\incfig}[1]{%
+	\def\svgwidth{\columnwidth}
+	\import{./figures/}{#1.pdf_tex}
+}
+
+\pdfsuppresswarningpagegroup=1
+
+\begin{document}
+
+\section*{Section 2.2}
+
+\subsection*{Exercise 2.2.1}
+
+Prove Proposition 2.2.5. (Hint: fix two of the variables and induct on the third.)
+
+\begin{proof}
+
+$ $\newline
+
+To prove $\left( a+b \right) + c = a + \left( b+c \right) $, we need to use induction on both $a$ and $b$ since they represent two (and only two) different schemes.
+
+We use induction on $a$. First we do the base case $a = 0$ to show $\left( 0+b \right) +c = 0+\left( b+c \right) $. By the definition of addition, we have $\left( 0+b \right) +c = b + c$ and $0+\left( b+c \right) = b+c$ . Thus the base case is done. Now suppose inductively that $\left( a+b \right) +c = a+\left( b+c \right) $, now we have to prove $\left( \left(  a \text{++} \right) +b \right) +c = \left( a \text{++} \right)  +\left( b+c \right) $. By the definition of addition, $\left( \left(  a \text{++} \right) +b \right) +c = \left( \left( a + b \right) \text{++} \right) + c = \left( \left( a + b \right)  + c \right) \text{++} $ and $\left( a \text{++} \right)  +\left( b+c \right) = \left( a + \left( b + c \right)  \right) \text{++} $. By axiom 2.4 and the hypothesis, $\left( \left( a \text{++} \right) + b \right) + c = \left( a \text{++} \right) + \left( b + c \right) $ thus we have closed the induction.
+
+Then we use induction on $b$. First we do the base case $b = 0$ to show $\left( a+0 \right) +c = a+\left( 0+c \right) $. By the definition of addition, we have $\left( a+0 \right) +c = a + c$ and $a+\left( 0+c \right) = a+c$ . Thus the base case is done. Now suppose inductively that $\left( a+b \right) +c = a+\left( b+c \right) $, now we have to prove $\left( a + \left(  b \text{++} \right) \right) +c = a + \left( \left( b \text{++} \right) + c \right) $. By the definition of addition and Lemma 2.2.3, $\left( a + \left(  b \text{++} \right) \right) +c = \left( \left( a + b \right) \text{++} \right) + c = \left( \left( a + b \right) + c \right) \text{++} $ and $a + \left( \left( b \text{++} \right) + c \right) = a + \left( b + c \right) \text{++} = \left( a + \left( b + c \right)  \right) \text{++} $. By axiom 2.4 and the hypothesis, $\left( a + \left(  b \text{++} \right) \right) +c = a + \left( \left( b \text{++} \right) + c \right) $ thus we have closed the induction.
+
+Thus we have proved $\left( a+b \right) + c = a + \left( b+c \right) $.
+
+\end{proof}
+
+\subsection*{Exercise 2.2.2}
+
+Prove Lemma 2.2.10. (Hint: use induction.)
+
+\begin{proof}
+
+We use induction on $a$. Let the property  $P(a)$ to be "if $a$ is a positive number, then there exists exactly one natural number $b$ such that $b\text{++} = a$ ". First we do the base case $a = 0$. $P(0)$ is true since the hypothesis is vacuous, thus the base case is done. Now suppose inductively $P(a)$ is true, now we need to show  $P(a\text{++})$ is true. By Axiom 2.3 and Definition 2.2.7, $a\text{++}$ is a positive number and hence we need to prove the conclusion is ture. Obviously there exists at least one natural number $b\text{++} = a\text{++}$ by Axiom 2.2. For the sake of contradiction that there exists more than one natural number of which the successor is $a\text{++}$, by Axiom 2.4, a contradiction. Thus there exists exactly one natural number $b$ such that $b\text{++} = a\text{++}$, thus we have closed the induction.
+
+\end{proof}
+
+\subsection*{Exercise 2.2.3}
+
+Prove Proposition 2.2.12. (Hint: you will need many of the
+preceding propositions, corollaries, and lemmas.)
+
+\begin{proof}
+
+$ $\newline
+
+For (a) (Order is reflexive), by Lemma 2.2.2 and $a = a + 0$, and Definition 2.2.11, $a \ge a$ is proved.
+
+For (b) (Order is transitive), if $a \ge b$ and $b \ge c$, by Definition 2.2.11 there exists a natural number $k_0$ such that $a = b + k_0$ and $k_1$ such that $b = c + k_1$. By substitution, we have $a = \left( c + k_1 \right) + k_0$. By Proposition 2.2.5, $a = \left( c + k_1 \right) + k_0 = c + \left( k_1 + k_0 \right) $. Since $k_0 + k_1$ is a natural number (can be proved by induction), we have $a \ge c$.
+
+For (c) (Order is anti-symmetric), For the sake of contradiction that $a \neq b$. By the trichotomy of order of natural numbers we have $a > b$ or $a < b$. If $a > b$, a contradiction to $a \le b$. If $a < b$, a contradiction to  $a \ge b$. Thus we have proved $a = b$.
+
+For (d) (Addition preserves order), to prove $a \ge b$ iff $a + c \ge b + c$, we need to show both $a \ge b$ implies $a + c \ge b + c$ and $a + c \ge b + c$ implies $a \ge b$. For the first implication, let $x = a + c$ and $y = b + c$, we need to show $x \ge y$. By definition of ordering, $a \ge b$ iff there exists a natural number $k$ such that $a = b + k$. Then we have $x = \left( b + k \right) + c = \left( b + c \right) + k = y + k$. Thus we have proved the first implication. For the second implication, suppose $a < b$, we have $a + c < b + c$ (can be proved in the way similar to the first implication), a contradiction. Thus we have proved the second implication.
+
+For (e), to prove $a < b$ iff $a\text{++} \le b$, we need to prove both $a < b$ implies $a\text{++} \le b$ and $a\text{++} \le b$ implies $a < b$. For the first implication, there exists a positive number $k_1$ (by (f)) such that $b = a + k_1$. By Lemma 2.2.10 there exists a natural number $k_2$ such that $b = a + k_1 = a + k_2\text{++} = \left( a + 1 \right) + k_2 = a\text{++} + k_2$, thus we have proved $a\text{++} \le b$. For the second implication, there exists a natural number $k_3$ such that $b = a\text{++} + k_3 = (a + 1) + k_3 = a + (1 + k_3)$. By Proposition 2.2.8, $1 + k_3$ is a positive number, thus $a < b$. Thus we have proved the second implication.
+
+For (f), to prove $a < b$ iff $b = a + d$ for some positive number $d$, we need to prove $a < b$ implies $b = a + d$ and $b = a + d$ implies $a < b$, for some positive number $d$. For the first implication, we have $a = b + d$ for some natural number $d$ and $a \neq b$. For the sake of contradiction that $d = 0$, we have $a = b$, a contradiction. Thus $d$ is positive by Definition 2.2.7. For the second implication, by Definition 2.2.11 we have $a \le b$, and we need to show $a \neq b$. For the sake of contradiction that $a = b$, by Proposition 2.2.6 $a + 0 = b + d$ implies $d = 0$, a contradiction. Thus we have proved $a < b$.
+
+\end{proof} 
+\subsection*{Exercise 2.2.4}
+
+Justify the three statements marked (why?) in the proof of Proposition 2.2.13.
+
+\begin{proof}
+
+$ $\newline
+
+To prove "$0 \le b$ for all natural number $b$" we use induction. First we do the base case $0 \le 0$, by Proposition 2.2.12 (a) it is true. Now suppose inductively $0 \le b$, we need to show $0 \le b\text{++}$. Since $b\text{++} = b + 1$, by Proposition 2.2.12 (f) we have $b < b\text{++}$, and then by Proposition 2.2.12 (b) we have $0 \le b\text{++}$. Thus we have closed the induction.
+
+To prove "if $a > b$, then $a\text{++} > b$", similar to the proof of the first statement, we have $a\text{++} > a$ thus $a\text{++} \ge b$. For the sake of contradiction that $a\text{++} = b$, we have $b = a + 1$ thus $b > a$, a contradiction. Thus we have proved the statement.
+
+To prove "if  $a = b$, then $a\text{++} > b$ ", we have $a\text{++} = a + 1 = b + 1$, thus by definition we have proved $a\text{++} > b$.
+
+\end{proof}
+
+\subsection*{Exercise 2.2.5}
+
+Prove Proposition 2.2.14. (Hint: define $Q(n)$ to be the property that $P(m)$ is true for all $m_0 \le m < n$; note that $Q(n)$ is vacuously true when $n < m_0$.)
+
+\begin{proof}
+
+Use the definition of $Q(n)$ in the hint. We induct on the natural $n$. First we do the base case  $n = 0$. $Q(n)$ is vacuously true for all natural number  $m_0$ since $m_0 \le m < 0$ is vacuous, thus we have proved the base case. Now suppose $Q(n)$ is true, we now need to show $Q(n\text{++})$ is ture. If $Q(n)$ is true, then $P\left( m \right)$ is ture for all natural number $m_0 \le m \le n$ by the implication. By Proposition 2.2.12 (b) and $n < n\text{++}$, we have $m_0 \le m \le n\text{++}$. For the sake of contradiction that $m = n\text{++}$, $m = n + 1$ hence $m > n$, by the trichotomy of ordering, a contradiction. Thus we have proved $Q(n\text{++})$ is ture and closed the induction.
+
+\end{proof}
+
+\subsection*{Exercise 2.2.6}
+
+Let n be a natural number, and let $P(m)$ be a property pertaining to the natural numbers such that whenever $P(m\text{++})$ is true, then $P(m)$ is true. Suppose that $P(n)$ is also true. Prove that $P(m)$ is true for all natural numbers $m \le n$; this is known as the principle of backwards induction. (Hint: apply induction to the variable $n$.)
+
+\begin{proof}
+
+We use induction on $n$. For the base case we need to show  $P(m)$ is true for all natural numbers  $m \le 0$, which is true by definition. Now suppose $P(m)$ is true for all natural numbers  $m \le n$, inductively we need to show that if $P\left( n\text{++} \right) $ is ture, then $P(m)$  is true for all natural numbers $m \le n\text{++}$. If $P(n\text{++})$ is true, then $P(n)$ is true. By the hypothesis we have  $P(m) $ is true for  $m \le n$. Thus $P(m)$ is true for  $m \le n\text{++}$, closing the induction.
+
+\end{proof}
+
+\end{document}
