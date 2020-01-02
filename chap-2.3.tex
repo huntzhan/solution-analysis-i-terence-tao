@@ -34,13 +34,7 @@ Prove Proposition 2.2.5. (Hint: fix two of the variables and induct on the third
 
 $ $\newline
 
-To prove $\left( a+b \right) + c = a + \left( b+c \right) $, we need to use induction on both $a$ and $b$ since they represent two (and only two) different schemes.
-
 We use induction on $a$. First we do the base case $a = 0$ to show $\left( 0+b \right) +c = 0+\left( b+c \right) $. By the definition of addition, we have $\left( 0+b \right) +c = b + c$ and $0+\left( b+c \right) = b+c$ . Thus the base case is done. Now suppose inductively that $\left( a+b \right) +c = a+\left( b+c \right) $, now we have to prove $\left( \left(  a \text{++} \right) +b \right) +c = \left( a \text{++} \right)  +\left( b+c \right) $. By the definition of addition, $\left( \left(  a \text{++} \right) +b \right) +c = \left( \left( a + b \right) \text{++} \right) + c = \left( \left( a + b \right)  + c \right) \text{++} $ and $\left( a \text{++} \right)  +\left( b+c \right) = \left( a + \left( b + c \right)  \right) \text{++} $. By axiom 2.4 and the hypothesis, $\left( \left( a \text{++} \right) + b \right) + c = \left( a \text{++} \right) + \left( b + c \right) $ thus we have closed the induction.
-
-Then we use induction on $b$. First we do the base case $b = 0$ to show $\left( a+0 \right) +c = a+\left( 0+c \right) $. By the definition of addition, we have $\left( a+0 \right) +c = a + c$ and $a+\left( 0+c \right) = a+c$ . Thus the base case is done. Now suppose inductively that $\left( a+b \right) +c = a+\left( b+c \right) $, now we have to prove $\left( a + \left(  b \text{++} \right) \right) +c = a + \left( \left( b \text{++} \right) + c \right) $. By the definition of addition and Lemma 2.2.3, $\left( a + \left(  b \text{++} \right) \right) +c = \left( \left( a + b \right) \text{++} \right) + c = \left( \left( a + b \right) + c \right) \text{++} $ and $a + \left( \left( b \text{++} \right) + c \right) = a + \left( b + c \right) \text{++} = \left( a + \left( b + c \right)  \right) \text{++} $. By axiom 2.4 and the hypothesis, $\left( a + \left(  b \text{++} \right) \right) +c = a + \left( \left( b \text{++} \right) + c \right) $ thus we have closed the induction.
-
-Thus we have proved $\left( a+b \right) + c = a + \left( b+c \right) $.
 
 \end{proof}
 
