@@ -1,0 +1,97 @@
+\documentclass[a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage[english]{babel}
+\usepackage{amsmath, amssymb}
+\usepackage[]{amsthm} %lets us use \begin{proof}
+\usepackage[]{amssymb} %gives us the character \varnothing
+
+
+% figure support
+\usepackage{import}
+\usepackage{xifthen}
+\pdfminorversion=7
+\usepackage{pdfpages}
+\usepackage{transparent}
+\newcommand{\incfig}[1]{%
+	\def\svgwidth{\columnwidth}
+	\import{./figures/}{#1.pdf_tex}
+}
+
+\pdfsuppresswarningpagegroup=1
+
+\begin{document}
+
+\section*{Section 2.3}
+
+\subsection*{Exercise 2.3.1}
+
+Prove Lemma 2.3.2. (Hint: modify the proofs of Lemmas 2.2.2, 2.2.3 and Proposition 2.2.4.)
+
+\begin{proof}
+
+$ $\newline
+
+We need to show $m \times 0 = m$ and $n \times \left(  m\text{++} \right) = \left( n\times m \right) + n$ before proving the multiplication is commutative.
+
+To show $m\times 0 = m$ we use induction. For the base case $0\times 0 = 0$ follows since we know that $0\times m = m$ by definition. Now suppose inductively that $m\times 0 = m$, we need to show $\left( m\text{++} \right) \times 0 = 0$. By definition $\left( m\text{++} \right) \times 0 = \left( m\times 0 \right) + 0 = 0$, hence the induction is closed.
+
+To show $n \times \left(  m\text{++} \right) = \left( n\times m \right) + n$, we induct on  $n$. For the base case $0 \times \left( m\text{++} \right) = \left( 0 \times m \right) + 0$ follows by the definitions of addition and multiplication. Now suppose inductively $n \times \left(  m\text{++} \right) = \left( n\times m \right) + n$, we need to show $n\text{++} \times \left(  m\text{++} \right) = \left( n\text{++}\times m \right) + n\text{++}$. The left-hand side is $n\times \left( m\text{++} \right) + \left( m\text{++} \right) = n\times m + n + m + 1$ by definition of multiplication and the hypothesis. The right-hand side is $\left( n\times m + m \right) + n\text{++} = n\times m + n + m + 1$ by definition of multiplication. Thus both sides are equal to each other, and we have closed the induction.
+
+To show multiplication is commutative, we induct on $n$. For the base case $0\times m = m\times 0$ follows since both sides euqal to zero by definition of multiplication and $m\times 0 = 0$. Now suppose inductively that $n \times m = m\times n$, we need to show $n\text{++}\times m = m\times n\text{++}$. The left-hand side is $n\times m + m$ by definition. The right-hand side is $m\times n + m$ by the lemma we've just proved. And by the hypothesis the right-hand then equals to $n\times m + m$. Thus both sides are equal to each other, and we have closed the induction.
+
+\end{proof}
+
+\subsection*{Exercise 2.3.2}
+
+Prove Lemma 2.3.3. (Hint: prove the second statement first.)
+
+\begin{proof}
+
+$ $\newline
+
+The statement is equivalent to "$n\times m$ is positive iff both $n$ and  $m$ are positive".
+
+First we need to show $n\times m$ is positive implies both $n$ and  $m$ are positive. For the sake of contradiction that $n$ equals to zero, by definition of multiplication  $0\times m = 0$, a contradiction. Similar contradiction holds for $m$ with Lemma 2.3.2. Thus we have proved the statement.
+
+Then we need to show both $n$ and  $m$ are positive implies $n\times m$ is positive. For the sake of contradiction that $n\times m = 0$, by Lemma 2.2.10 there exists extractly one natural nunmber $a$ such that  $a\text{++} = n$, thus by definition of multiplication we have $n\times m = \left( a\text{++} \right) \times m = \left( a\times m \right) \text{++}$. Since $a\times m$ is a natural number, by Axiom 2.3 $\left( a\times m \right) \text{++} \neq 0$, a contradiction. Thus $n\times m$ is positive.
+
+Thus we have proved the original statement.
+
+\end{proof}
+
+\subsection*{Exercise 2.3.3}
+
+Prove Proposition 2.3.5. (Hint: modify the proof of Proposition
+2.2.5 and use the distributive law.)
+
+\begin{proof}
+
+	We use induction on $a$. For the base case $\left( 0\times b \right) \times c = 0 \times \left( b\times c \right) $ follows, since the left-hand side equals to $0\times c = 0$ by definition of multiplication, and the right-hand side equals to $0$ since $b\times c$ is a natural number and $0$ times a natural number equals to $0$. Now suppose inductively $\left( a\times b \right) \times c = a\times \left( b\times c \right) $, we need to show $\left( a\text{++}\times b \right) \times c = a\text{++}\times \left( b\times c \right) $. The left-hand side equals to $\left( a\times b + b \right) \times c$ by definition of multiplication, then equals to $\left( a\times b \right) \times c + b\times c$ by the distributive law. The right-hand side equals to $a\times \left( b\times c \right) + b\times c$ by definition of multiplication. By the hypothesis both sides are equal to each other, thus we have closed the induction.
+
+\end{proof}
+
+\subsection*{Exercise 2.3.4}
+
+Prove the identity $\left( a + b \right) ^2 = a^2 + 2ab + b^2$ for all natural
+numbers $a$, $b$.
+
+\begin{proof}
+
+	$\left( a+b \right) ^2 = \left( a+b \right) ^1 \left( a + b \right) = \left( a + b \right) \left( a + b \right) $ by definition of exponentiation. Thus equals to  $a\times \left( a + b \right) + b\times \left( a+b \right) = a\times a + a\times b + b\times a + b\times b$ by the distributive law. $a\times a = a^2$ and $b\times b = b^2$ by definition of exponentiation. $a\times b + b\times a = a\times b + a\times b = 2ab$ since multiplication is commutative and the definition of multiplication. Thus we have proved the statement.
+
+\end{proof}
+
+\subsection*{Exercise 2.3.5}
+
+Prove Proposition 2.3.9. (Hint: fix $q$ and induct on $n$.)
+
+\begin{proof}
+
+	We use induction on $n$ (keep $q$ fixed). For the base case there exists natural numbers $m = 0$, $r = 0$ such that $0 \le r < q$ and $0 = mq + r$. Now suppose inductively there exists $m$, $r$ such that $0 \le r < q$ and $n = mq + r$, we need to show there exists $m'$,  $r'$ such that  $0 \le r' < q$ and $n = m'q + r'$. Thus $r\text{++} \le q$ by Proposition 2.2.12 (e). If $r\text{++} < q$, we can simply set $m' = m$ and  $r' = r + 1$. Otherwise if  $r\text{++} = q$, then $n\text{++} = mq + q = \left( m\text{++} \right) \times q + 0$, thus we can set $m' = m\text{++}$ and $r' = 0$. Thus we have close the induction.
+
+\end{proof}
+
+\end{document}
